@@ -26,10 +26,12 @@ Route::resource('jobs', JobController::class)
 
 Route::get('login', fn() => to_route('auth.create'))->name('login');
 Route::resource('auth', AuthController::class)
-    ->only(['create', 'store']);
+    ->only(['create','store']);
 Route::delete('logout', fn() => to_route('auth.destroy'))->name('logout');
 Route::delete('auth', [AuthController::class, 'destroy'])
     ->name('auth.destroy');
+Route::get('register', [AuthController::class, 'register'])->name('auth.register');
+Route::post('register_user', [AuthController::class, 'store_user'])->name('auth.register_user');
 
 Route::middleware('auth')->group(function () {
     Route::resource('job.application', JobApplicationController::class)

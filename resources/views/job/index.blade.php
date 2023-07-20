@@ -51,3 +51,7 @@
     </x-job-card>
   @endforeach
 </x-layout>
+
+<div class="content-center w-full">
+  {{ $jobs->links() }}
+</div>
